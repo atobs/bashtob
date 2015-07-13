@@ -11,17 +11,16 @@ var Primus = require("primus.io");
 // 4. figure out how to post and list on the server...
 
 
-// URL of server + where primus lives
+// URL of atob server
 var url = "localhost:3300";
 
 
 function connect_to_atob(server_url, cb) {
-  var spec_path = "primus/spec";
   var atob_socket_path = "http://" + url;
 
 
   // Connect to atob server and get cookies so we can use them for auth
-  request.get("http://" + url, function(err, response) {
+  request.get("http://" + url + "/pkg/status", function(err, response) {
     if (err) {
       console.log("ERROR CONNECTING TO SERVER", err);
     }
@@ -40,9 +39,11 @@ function connect_to_atob(server_url, cb) {
         var options = { 
           path: spec.pathname,
         };
+
+        // create a compatible primus server side client using the same parameters as the atob server
         var Socket = Primus.createSocket({ transformer: spec.transformer, parser: spec.parser } );
 
-        // Find our signed connect.sid cookie
+        // send our signed connect.sid cookie in the URL
         var client = new Socket("ws://" + url + "?connect.sid=" + sid_cookie, options);
 
         cb(client);
@@ -83,9 +84,26 @@ connect_to_atob(url, function(client) {
   //   console.log(JSON.stringify(ret, null, 2));
   // });
 
-  // TODO: check if this works
-  // write a new reply
-  //  board_socket.send("new_reply", 
-  //    { post_id: some_id, text: "some text", author: "anon", tripcode: "some hash value" });
+  //  write a new post and then respond to it
+  //  var board = "test";
+  //  board_socket.send("new_post", { 
+  //      text: "some text from bashtob", 
+  //      title: "bashtop post", 
+  //      author: "anon", 
+  //      tripcode: "some hash value", // the tripcode should be the md5sum of the input text, not the plain text
+  //      board: board 
+  //    }, function(post_id) {
+  //        console.log("added new thread to atob in", "/" + board, post_id); 
   //
+  //        board_socket.send("new_reply", { 
+  //          post_id: post_id, 
+  //          text: "some reply text from bashtob", 
+  //          author: "anon", 
+  //          tripcode: "diff hash value" 
+  //        }, function() {
+  //             console.log("responded to thread", post_id, "in", "/" + board);
+  //          });
+  //
+  //     });
+  
 });
