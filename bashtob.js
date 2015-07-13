@@ -27,7 +27,7 @@ function connect_to_atob(server_url, cb) {
     }
 
     // Parse cookies
-    var cookie_header = response.headers['set-cookie'][0];
+    var cookie_header = response.headers['set-cookie'][0] || "";
     var cookies = Cookie.parse(cookie_header);
 
     // TODO: persist this cookie to disk so we don't create endless atob cups...
@@ -61,11 +61,31 @@ connect_to_atob(url, function(client) {
   var home_socket = client.channel('ctrl_home');
   var board_socket = client.channel('ctrl_boards');
 
+  // shows anonicators
   home_socket.on("anons", console.log);
+
+  // burtle meter
   home_socket.on('meter', console.log);
+
+  // when a new post (thread) is made
   home_socket.on("new_post", console.log);
+
+  // when a new reply is made
   home_socket.on("new_reply", console.log);
 
-//  board_socket.write("new_post", {});
-//  board_socket.write("new_reply", {});
+  // list out the posts on a board
+  //  board_socket.send("list_posts", "b", function(ret) {
+  //    console.log("POSTS ARE", JSON.stringify(ret, null, 2)); 
+  //  });
+
+  // get a specific post by ID (includes its parent and siblings)
+  // board_socket.send("get_post", "34817", function(ret) {
+  //   console.log(JSON.stringify(ret, null, 2));
+  // });
+
+  // TODO: check if this works
+  // write a new reply
+  //  board_socket.send("new_reply", 
+  //    { post_id: some_id, text: "some text", author: "anon", tripcode: "some hash value" });
+  //
 });
