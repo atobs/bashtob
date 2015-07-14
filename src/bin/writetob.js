@@ -4,6 +4,7 @@
 var atob = require("../client");
 var printer = require("../printer");
 var prompt = require("prompt");
+var escapehtml = require("escape-html");
 
 function calculate_md5(text) {
   var crypto = require('crypto');
@@ -127,7 +128,9 @@ function write_reply(client, post_id) {
         tripcode: calculate_md5(result.author + ":" + calculate_md5(tripcode))
       };
 
-      printer.post(reply_data);
+      var preview_data = _.clone(reply_data);
+      preview_data.text = escapehtml(result.text);
+      printer.post(preview_data);
 
       prompt.get([ {
         name: "submit", default: "y" }], function(err, result) {
