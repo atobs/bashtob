@@ -1,6 +1,7 @@
 # Installation
 
-npm install
+    # we need -g flag because it has binaries
+    sudo npm install -g bashtob
 
 ## bashtob
 
