@@ -248,37 +248,6 @@ function translate_markdown($el, escaped) {
   $el.html(escaped);
   $el.addClass("marked");
 
-  // tidy up the links that have icony things in them
-  var links = $el.find("a");
-  links.each(function() {
-    var href = $(this).attr("href");
-    if (href) {
-      $(this).attr("href", href);
-    }
-
-  });
-
-  var brs = $el.find("br");
-  brs.each(function() {
-    var $br = $(this);
-
-    var textEl = $br[0].previousSibling || $br[0].prev;
-    if (textEl) {
-      if (textEl.data) {
-        var match = textEl.data.toString().match(/^(&gt;|>)((?!(&gt;|>)))/);
-        if (match) {
-          var text = textEl.data;
-          text = "<span class='blockquote'>" + text + "</span>";
-          $(textEl).remove();
-
-          $br.before($(text));
-        }
-      }
-    }
-  });
-
-
-
 }
 
 // Hmmm...
