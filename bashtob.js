@@ -42,10 +42,7 @@ atob.connect(url, function(client) {
 
   if (board) {
     // list out the posts on a board
-    console.log("LISTING POSTS ON BOARD", board);
     board_socket.send("list_posts", board, function(ret) {
-      console.log("POSTS", ret);
-      console.log("LOADING POSTS FOR BOARD", board);
       _.map(ret, printer.post);
       process.exit(0);
     });
