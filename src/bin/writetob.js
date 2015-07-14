@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // A script to connect to atob server using primus.io
 
-var atob = require("./client");
-var printer = require("./printer");
+var atob = require("../client");
+var printer = require("../printer");
 var prompt = require("prompt");
 
 function calculate_md5(text) {
@@ -152,8 +152,7 @@ function write_reply(client, post_id) {
   
 }
 
-var url = process.env.ATOB_HOST || "atob.xyz";
-atob.connect(url, function(err, client) {
+atob.connect(function(err, client) {
 
   var arg = process.argv[2];
 

@@ -1,16 +1,15 @@
 #!/usr/bin/env node
 // A script to connect to atob server using primus.io
 
-var atob = require("./client");
-var url = process.env.ATOB_HOST || "atob.xyz";
-var printer = require("./printer");
+var atob = require("../client");
+var printer = require("../printer");
 
 var timeout = 200;
 var CLIENT;
 function tailtob() {
   timeout = timeout * 2;
   timeout = Math.min(timeout, 30000);
-  atob.connect(url, function(err, client) {
+  atob.connect(function(err, client) {
     if (err) {
       console.log("Error connecting to server, reconnecting in", timeout + "ms");
       setTimeout(tailtob, timeout);

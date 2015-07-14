@@ -2,9 +2,9 @@
 
 // A script to connect to atob server using primus.io
 
-var atob = require("./client");
+var atob = require("../client");
 
-var printer = require("./printer");
+var printer = require("../printer");
 var sys = require("sys");
 
 var arg = process.argv[2];
@@ -38,8 +38,7 @@ if (arg[0] == '/') {
 
   
 // CONNECT AND PRINT STUFF OUT
-var url = process.env.ATOB_HOST || "atob.xyz";
-atob.connect(url, function(err, client) {
+atob.connect(function(err, client) {
   var board_socket = client.channel('ctrl_boards');
 
   if (board) {
