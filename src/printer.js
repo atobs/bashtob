@@ -29,7 +29,9 @@ function print_post(post, options) {
   } else {
 
     xcolor.log(color_str, "#" + (post.id || post.post_id), reply_str, titleEl.text());
-    xcolor.log(textEl.text().trim());
+    if (textEl.text().trim()) {
+      xcolor.log(textEl.text().trim());
+    }
   }
 
 }
@@ -38,7 +40,6 @@ module.exports = {
   post: function(post) {
     xcolor.log("");
     print_post(post);
-    xcolor.log(""); 
   },
   full_post: function(post) {
     xcolor.log("");
