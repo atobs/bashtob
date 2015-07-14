@@ -6,12 +6,12 @@ npm install
 
 view posts on boards:
 
-    node bashtob.js /b
-    node bashtob.js 33000
-    node bashtob.js 33000!
+    bashtob /b
+    bashtob 33000
+    bashtob 33000!
 
 ## tailtob
 
 subscribe to see new replies and updates happening on atob
 
-    node tailtob.js
+    tailtob
