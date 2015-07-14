@@ -1,6 +1,6 @@
 {
   "name": "bashtob",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Browse and submit to atob via command line",
   "main": "bashtob.js",
   "bin": {
@@ -25,12 +25,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/garzo/bashtob"
+    "url": "https://github.com/atobs/bashtob"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/garzo/bashtob/issues"
+    "url": "https://github.com/atobs/bashtob/issues"
   },
-  "homepage": "https://github.com/garzo/bashtob"
+  "homepage": "https://github.com/atobs/bashtob"
 }
