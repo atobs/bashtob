@@ -62,6 +62,16 @@ atob.connect(url, function(client) {
       if (show_full) { 
         printer.full_post(ret);
       } else {
+        if (post !== (ret.post_id || ret.id)) {
+          var children = _.filter(ret.children, function(r) {
+            return (r.id || r.post_id) == post;
+          });
+
+          if (children.length) {
+            ret = children[0];  
+          }
+        }
+
         printer.post(ret);
       }
       process.exit(0);
