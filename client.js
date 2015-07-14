@@ -8,7 +8,6 @@ global._ = _;
 // 1. get a valid cookie
 // 2. connect the socket server
 // 3. subscribe to channels we are into
-// 4. figure out how to post and list on the server...
 
 
 // URL of atob server
@@ -59,4 +58,4 @@ function connect_to_atob(url, cb) {
 
 module.exports = {
   connect: connect_to_atob
-}
+};
