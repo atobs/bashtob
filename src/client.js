@@ -20,7 +20,7 @@ function connect_to_atob(url, cb) {
   // Connect to atob server and get cookies so we can use them for auth
   request.get("http://" + url + "/pkg/status", function(err, response) {
     if (err) {
-      console.log("ERROR CONNECTING TO SERVER", err);
+      cb(err);
       return;
     }
 
@@ -44,7 +44,7 @@ function connect_to_atob(url, cb) {
 
         // send our signed connect.sid cookie in the URL
         var client = new Socket("ws://" + url + "?connect.sid=" + sid_cookie, options);
-        cb(client);
+        cb(null, client);
 
 
     

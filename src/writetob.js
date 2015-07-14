@@ -153,7 +153,7 @@ function write_reply(client, post_id) {
 }
 
 var url = process.env.ATOB_HOST || "atob.xyz";
-atob.connect(url, function(client) {
+atob.connect(url, function(err, client) {
 
   var arg = process.argv[2];
 
