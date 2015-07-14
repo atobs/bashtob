@@ -6,6 +6,7 @@ var url = process.env.ATOB_HOST || "atob.xyz";
 var printer = require("./printer");
 
 var timeout = 200;
+var CLIENT;
 function tailtob() {
   timeout = timeout * 2;
   timeout = Math.min(timeout, 30000);
@@ -15,6 +16,8 @@ function tailtob() {
       setTimeout(tailtob, timeout);
       return;
     }
+
+    CLIENT = client;
 
     timeout = 1000;
 
@@ -35,6 +38,11 @@ function tailtob() {
 
 process.on("uncaughtException", function() {
   console.log("Error... reconnecting...");
+  if (CLIENT) {
+    CLIENT.end();
+    CLIENT = null;
+  }
+
   tailtob();
 });
 
