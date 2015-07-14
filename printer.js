@@ -14,7 +14,7 @@ function print_post(post, options) {
 
   var colors = tripcode.get_colors_for_hash(post.tripcode);
   var color_str = _.map(colors, function(color) {
-    return "{{bg #" + color + "}} {{/color}}";
+    return "{{bg #" + color + "}}  {{/color}}";
   }).join("");
 
 
