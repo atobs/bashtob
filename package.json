@@ -1,6 +1,6 @@
 {
   "name": "bashtob",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Browse and submit to atob via command line",
   "main": "bashtob.js",
   "bin": {
@@ -17,6 +17,8 @@
     "sockjs": "x",
     "sockjs-client": "x",
     "underscore": "x",
+    "prompt" : "x",
+    "escape-html": "x",
     "xcolor": "x"
   },
   "devDependencies": {},
