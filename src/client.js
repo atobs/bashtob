@@ -21,6 +21,7 @@ function connect_to_atob(url, cb) {
   request.get("http://" + url + "/pkg/status", function(err, response) {
     if (err) {
       console.log("ERROR CONNECTING TO SERVER", err);
+      return;
     }
 
     // Parse cookies
@@ -43,7 +44,6 @@ function connect_to_atob(url, cb) {
 
         // send our signed connect.sid cookie in the URL
         var client = new Socket("ws://" + url + "?connect.sid=" + sid_cookie, options);
-
         cb(client);
 
 

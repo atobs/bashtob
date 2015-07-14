@@ -38,7 +38,7 @@ if (arg[0] == '/') {
 
   
 // CONNECT AND PRINT STUFF OUT
-var url = "atob.xyz";
+var url = process.env.ATOB_HOST || "atob.xyz";
 atob.connect(url, function(client) {
   var board_socket = client.channel('ctrl_boards');
 

@@ -1,6 +1,5 @@
 global.window = {};
 global.$ = require("cheerio");
-global.window.md5 = require("md5sum").calculate;
 global.marked = require("marked");
 
 var xcolor = require("xcolor");
