@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 // A script to connect to atob server using primus.io
 
 var atob = require("./client");
