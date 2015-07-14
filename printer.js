@@ -28,7 +28,7 @@ function print_post(post, options) {
     reply_str = "(reply to #" + post.parent_id + ")";
   }
 
-  xcolor.log(color_str, "#" + post.id || post.post_id, reply_str, titleEl.text());
+  xcolor.log(color_str, "#" + (post.id || post.post_id), reply_str, titleEl.text());
   xcolor.log(textEl.text().trim());
 
 }
