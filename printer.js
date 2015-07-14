@@ -26,10 +26,12 @@ function print_post(post, options) {
   var reply_str = "";
   if (post.parent_id) {
     reply_str = "(reply to #" + post.parent_id + ")";
-  }
+    xcolor.log("#" + (post.id || post.post_id) + " " + color_str, titleEl.text().trim(), textEl.text().trim());
+  } else {
 
-  xcolor.log(color_str, "#" + (post.id || post.post_id), reply_str, titleEl.text());
-  xcolor.log(textEl.text().trim());
+    xcolor.log(color_str, "#" + (post.id || post.post_id), reply_str, titleEl.text());
+    xcolor.log(textEl.text().trim());
+  }
 
 }
 
@@ -37,12 +39,12 @@ module.exports = {
   post: function(post) {
     xcolor.log("");
     print_post(post);
-    xcolor.log("\n"); 
+    xcolor.log(""); 
   },
   full_post: function(post) {
     xcolor.log("");
     print_post(post);
-    xcolor.log("\n"); 
+    xcolor.log(""); 
 
     _.each(post.children, function(child) {
       print_post(child);
