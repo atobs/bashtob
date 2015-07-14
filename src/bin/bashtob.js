@@ -45,6 +45,7 @@ atob.connect(function(err, client) {
     // list out the posts on a board
     board_socket.send("list_posts", board, function(ret) {
       _.map(ret, printer.post);
+      console.log("");
       process.exit(0);
     });
   }
@@ -72,6 +73,7 @@ atob.connect(function(err, client) {
         }
 
         printer.post(ret);
+        console.log("");
       }
       process.exit(0);
     });

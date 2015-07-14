@@ -23,3 +23,5 @@ write posts or replies on boards
 subscribe to see new replies and updates happening on atob
 
     tailtob
+    tailtob /b
+    tailtob 33000
