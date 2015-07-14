@@ -1,7 +1,7 @@
 // A script to connect to atob server using primus.io
 
 var atob = require("./client");
-var url = "localhost:3300";
+var url = "atob.xyz";
 var printer = require("./printer");
 
 atob.connect(url, function(client) {

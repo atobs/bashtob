@@ -5,7 +5,6 @@ var atob = require("./client");
 var printer = require("./printer");
 var sys = require("sys");
 
-var url = "localhost:3300";
 var arg = process.argv[2];
 
 function show_usage_and_exit() {
@@ -37,6 +36,7 @@ if (arg[0] == '/') {
 
   
 // CONNECT AND PRINT STUFF OUT
+var url = "atob.xyz";
 atob.connect(url, function(client) {
   var board_socket = client.channel('ctrl_boards');
 
