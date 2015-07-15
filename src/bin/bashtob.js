@@ -48,6 +48,8 @@ atob.connect(function(err, client) {
         printer.post(post);
       });
 
+      console.log("");
+
       process.exit(0);
     });
 
