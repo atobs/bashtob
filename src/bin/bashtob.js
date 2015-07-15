@@ -37,14 +37,14 @@ atob.connect(function(err, client) {
     board_socket.send("recent_posts", function(ret) {
       console.log("");
       xcolor.log("{{#32CD32}}{{underline}}RECENT THREADS");
-      _.each(_.first(ret.posts, 10), function(post) {
+      _.each(_.first(ret.posts, 6), function(post) {
         console.log("");
         printer.post(post);
       });
 
       console.log("");
-      xcolor.log("{{#32CD32}}{{underline}}RECENT REPLIES");
-      _.each(_.first(ret.replies, 10), function(post) {
+      xcolor.log("{{#32CD32}}{{underline}}RECENT REPLIES\n");
+      _.each(_.first(ret.replies, 20), function(post) {
         printer.post(post);
       });
 
