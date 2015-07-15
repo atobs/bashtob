@@ -13,7 +13,7 @@ global._ = _;
 // URL of atob server
 
 
-var url = process.env.ATOB_HOST || "atob.xyz";
+var url = process.env.HOST || process.env.ATOB_HOST || "atob.xyz";
 function connect_to_atob(cb) {
   var atob_socket_path = "http://" + url;
 
