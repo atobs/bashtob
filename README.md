@@ -1,7 +1,14 @@
-# Installation
+# Installation from source
 
-    # we need -g flag because it has binaries
-    sudo npm install -g bashtob
+    git clone http://github.com/atobs/bashtob
+    cd bashtob
+    # install dependencies
+    npm install 
+    # make symlinks for our binaries
+    sudo npm link 
+
+    # to update (later)
+    git pull 
 
 ## bashtob
 
