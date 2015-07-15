@@ -1,12 +1,13 @@
 {
   "name": "bashtob",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Browse and submit to atob via command line",
   "main": "bashtob.js",
   "bin": {
     "writetob": "src/bin/writetob.js",
     "bashtob": "src/bin/bashtob.js",
-    "tailtob": "src/bin/tailtob.js"
+    "tailtob": "src/bin/tailtob.js",
+    "chattob" : "src/bin/chattob.js"
   },
   "dependencies": {
     "cheerio": "x",
