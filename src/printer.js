@@ -39,7 +39,6 @@ function print_post(post, options) {
 
 module.exports = {
   post: function(post) {
-    xcolor.log("");
     print_post(post);
   },
   full_post: function(post) {

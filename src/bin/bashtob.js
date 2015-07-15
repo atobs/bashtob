@@ -38,6 +38,7 @@ atob.connect(function(err, client) {
       console.log("");
       xcolor.log("{{#32CD32}}{{underline}}RECENT THREADS");
       _.each(_.first(ret.posts, 10), function(post) {
+        console.log("");
         printer.post(post);
       });
 
