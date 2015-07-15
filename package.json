@@ -11,14 +11,16 @@
   "dependencies": {
     "cheerio": "x",
     "cookie": "x",
+    "engine.io": "x",
+    "engine.io-client": "x",
+    "escape-html": "x",
     "marked": "x",
     "primus.io": "x",
+    "prompt": "x",
     "request": "x",
     "sockjs": "x",
     "sockjs-client": "x",
     "underscore": "x",
-    "prompt" : "x",
-    "escape-html": "x",
     "xcolor": "x"
   },
   "devDependencies": {},
