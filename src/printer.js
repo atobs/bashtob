@@ -23,12 +23,13 @@ function print_post(post, options) {
   var textEl = $("<div />").text(post.text);
   text.format_text(textEl);
   var reply_str = "";
+  var board_str = "{{blue}}/" + post.board_id + "{{/color}}";
   if (post.parent_id) {
     reply_str = "(reply to #" + post.parent_id + ")";
-    xcolor.log("#" + (post.id || post.post_id) + " " + color_str, titleEl.text().trim(), textEl.text().trim());
+    xcolor.log([board_str, "{{cyan}}#" + (post.id || post.post_id) + "{{/cyan}} ",  color_str, titleEl.text().trim(), textEl.text().trim()].join(" "));
   } else {
 
-    xcolor.log(color_str, "#" + (post.id || post.post_id), reply_str, titleEl.text());
+    xcolor.log([board_str, color_str, "{{cyan}}#" + (post.id || post.post_id) + "{{/color}}", reply_str, titleEl.text()].join(" "));
     if (textEl.text().trim()) {
       xcolor.log(textEl.text().trim());
     }

@@ -111,7 +111,7 @@ renderer.image = function(href, title, text) {
   var url_tag = $("<span>");
   var img_tag = $("<a target='_blank'>[link]</a>");
 
-  url_tag.html(text);
+  url_tag.html("{{#f4034c}}" + text + "{{/color}}");
   url_tag.attr("href", href);
   url_tag.css("cursor", "pointer");
 
@@ -221,12 +221,12 @@ function add_replies($el) {
       return reply_str.replace(/NAME/g, post_id.toLowerCase());
     });
 
-    reply_str = "<a href='/p/NAME' class='replylink' data-parent-id='NAME'>&gt;&gt;NAME</a>";
+    reply_str = "<a href='/p/NAME' class='replylink' data-parent-id='NAME'>{{salmon}}&gt;&gt;NAME{{/color}}</a>";
     replaced = replaced.replace(/&gt;&gt;#?([\d]+)/g, function(x, post_id) {
       return reply_str.replace(/NAME/g, post_id.toLowerCase());
     });
 
-    reply_str = " <a href='/p/ID' class='postlink'>#ID</a> ";
+    reply_str = " <a href='/p/ID' class='postlink'>{{bg cyan}}#ID{{/color}}</a> ";
 
     replaced = replaced.replace(/[^&;]#([\d]+)/g, function(x, post_id) {
       return reply_str.replace(/ID/g, post_id.toLowerCase());
