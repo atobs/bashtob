@@ -3,6 +3,7 @@
 // A script to connect to atob server using primus.io
 
 var atob = require("../client");
+var xcolor = require("xcolor");
 
 var printer = require("../printer");
 var sys = require("sys");
@@ -34,16 +35,19 @@ atob.connect(function(err, client) {
 
   if (!BOARD && !POST) {
     board_socket.send("recent_posts", function(ret) {
-      console.log("RECENT THREADS");
+      console.log("");
+      xcolor.log("{{#32CD32}}{{underline}}RECENT THREADS");
       _.each(_.first(ret.posts, 10), function(post) {
         printer.post(post);
       });
 
       console.log("");
-      console.log("RECENT REPLIES");
+      xcolor.log("{{#32CD32}}{{underline}}RECENT REPLIES");
       _.each(_.first(ret.replies, 10), function(post) {
         printer.post(post);
       });
+
+      process.exit(0);
     });
 
   }
