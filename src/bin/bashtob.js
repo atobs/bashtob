@@ -14,25 +14,16 @@ function show_usage_and_exit() {
   process.exit(0);
 }
 
-
-if (!arg) {
-  show_usage_and_exit();
-}
-
-
-
-
 // PARSE ARGS
 // So... bashtob looks at a board or at a post...
-var board, post;
-if (arg[0] == '/') {
-  board = arg.slice(1);
-} else {
+var BOARD, POST;
 
-  post = arg;
+if (arg) {
+  if (arg[0] == '/') {
+    BOARD = arg.slice(1);
+  } else {
+    POST = arg;
 
-  if (!/^\d+!?$/.test(post)) {
-    show_usage_and_exit();
   }
 }
 
@@ -41,22 +32,38 @@ if (arg[0] == '/') {
 atob.connect(function(err, client) {
   var board_socket = client.channel('ctrl_boards');
 
-  if (board) {
+  if (!BOARD && !POST) {
+    board_socket.send("recent_posts", function(ret) {
+      console.log("RECENT THREADS");
+      _.each(_.first(ret.posts, 10), function(post) {
+        printer.post(post);
+      });
+
+      console.log("");
+      console.log("RECENT REPLIES");
+      _.each(_.first(ret.replies, 10), function(post) {
+        printer.post(post);
+      });
+    });
+
+  }
+
+  if (BOARD) {
     // list out the posts on a board
-    board_socket.send("list_posts", board, function(ret) {
+    board_socket.send("list_posts", BOARD, function(ret) {
       _.map(ret, printer.post);
       console.log("");
       process.exit(0);
     });
   }
 
-  if (post) {
+  if (POST) {
     var show_full = false;
-    if (post.indexOf("!") !== -1) {
+    if (POST.indexOf("!") !== -1) {
       show_full = true;
       
     }
-    post = post.replace(/!/, '');
+    var post = POST.replace(/!/, '');
     //  get a specific post by ID (includes its parent and siblings)
     board_socket.send("get_post", post, function(ret) {
       if (show_full) { 
