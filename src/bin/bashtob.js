@@ -56,7 +56,7 @@ atob.connect(function(err, client) {
   if (BOARD) {
     // list out the posts on a board
     board_socket.send("list_posts", BOARD, function(ret) {
-      _.map(ret, printer.post);
+      _.map(_.first(ret, 10), printer.post);
       console.log("");
       process.exit(0);
     });
