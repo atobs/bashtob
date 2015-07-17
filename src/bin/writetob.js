@@ -6,15 +6,7 @@ var printer = require("../printer");
 var prompt = require("prompt");
 var escapehtml = require("escape-html");
 
-function calculate_md5(text) {
-  var crypto = require('crypto');
-  var md5sum = crypto.createHash('md5');
-
-  return md5sum.update(text).digest('hex');
-
-
-}
-
+var calculate_md5 = require("../md5");
 function write_post(client, board_id) {
   var board_socket = client.channel('ctrl_boards');
   prompt.start();

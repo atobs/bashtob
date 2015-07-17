@@ -1,6 +1,6 @@
 {
   "name": "bashtob",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Browse and submit to atob via command line",
   "main": "bashtob.js",
   "bin": {

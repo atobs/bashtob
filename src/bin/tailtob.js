@@ -3,6 +3,7 @@
 
 var atob = require("../client");
 var printer = require("../printer");
+var post_store = require("../post_store");
 
 var timeout = 200;
 var CLIENT;
@@ -66,6 +67,7 @@ function tailtob() {
 
     function filtered_print(ret) {
       SINCE = Date.now();
+      post_store[ret.post_id || ret.id] = ret;
 
       if (!BOARD && !POST) {
         printer.post(ret);
@@ -97,8 +99,7 @@ function tailtob() {
 }
 
 process.on("uncaughtException", function(err) {
-  console.log("Error... reconnecting...");
-  console.log(err);
+  console.log("Error", err);
 
   if (CLIENT) {
     CLIENT.end();

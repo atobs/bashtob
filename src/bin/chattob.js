@@ -47,8 +47,7 @@ function tailtob() {
 }
 
 process.on("uncaughtException", function(err) {
-  console.log("Error... reconnecting...");
-  console.log(err);
+  console.log("Error", err);
 
   if (CLIENT) {
     CLIENT.end();
